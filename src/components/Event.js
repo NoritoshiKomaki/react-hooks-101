@@ -24,10 +24,11 @@ const Event = ({ event }) => {
 
   return (
     <tr>
-      <td>{id}</td>
+      <td><button type="button" className="btn btn-danger" style={{height: '24px', width: '24px', padding: 0, lineHeight: 1, verticalAlign: 'top'}} onClick={handleClickDeleteButton}>×</button></td>
       <td>{event.title}</td>
-      <td>{event.body}</td>
-      <td><button type="button" className="btn btn-danger" onClick={handleClickDeleteButton}>削除</button></td>
+      <td>{Math.round(event.body * 10000) / 10000}</td>
+      <td>{Math.round(2000000 * event.body)}</td>
+      <td>{Math.round(2000000 * event.body - event.title)}</td>
     </tr>
   )
 }
