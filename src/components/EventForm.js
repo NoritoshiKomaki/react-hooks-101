@@ -38,12 +38,12 @@ const EventForm = () => {
         <div className="form-group">
           <br />
           <label htmlFor="formEventTitle">購入額</label>
-          <input className="form-control" id="formEventTitle" value={title} onChange={e => setTitle(e.target.value)} />
+          <input type="number" className="form-control" id="formEventTitle" value={title} onChange={e => setTitle(e.target.value)} />
         </div>
 
         <div className="form-group">
           <label htmlFor="formEventBody">購入枚数</label>
-          <input className="form-control" id="formEventBody" value={body} onChange={e => setBody(e.target.value)} />
+          <input type="number" className="form-control" id="formEventBody" value={body} onChange={e => setBody(e.target.value)} />
         </div>
 
         <button className="btn btn-primary" onClick={addEvent} disabled={unCreatable}>SEND</button>
