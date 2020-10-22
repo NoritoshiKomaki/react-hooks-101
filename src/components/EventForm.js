@@ -1,15 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { 
   CREATE_EVENT,
-  DELETE_ALL_EVENTS,
-  ADD_OPERATION_LOG,
-  DELETE_ALL_OPERATION_LOGS
+  ADD_OPERATION_LOG
 } from '../actions'
 import AppContext from '../contexts/AppContext'
 import { timeCurrentIso8601} from '../utils'
 
 const EventForm = () => {
-  const { state, dispatch } = useContext(AppContext)
+  const { dispatch } = useContext(AppContext)
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
 
@@ -32,50 +30,24 @@ const EventForm = () => {
     setBody('')
   }
 
-  const deleteAllEvents = e => {
-    e.preventDefault()
-    const result = window.confirm('全てのイベントを本当に削除しても良いですか？')
-    if (result) {
-      dispatch({ type: DELETE_ALL_EVENTS })
-
-      dispatch({
-        type: ADD_OPERATION_LOG,
-        description: '全てのイベントを削除しました。',
-        operatedAt: timeCurrentIso8601()
-      })
-    }
-  }
-
   const unCreatable = title === '' || body === ''
-
-  const deleteAllOperationLogs = e => {
-    e.preventDefault()
-    const result = window.confirm('全ての操作ログを本当に削除しても良いですか？')
-
-    if (result) {
-      dispatch({
-        type: DELETE_ALL_OPERATION_LOGS
-      })
-    }
-  }
 
   return (
     <>
-      <h4>イベント作成フォーム</h4>
       <form>
         <div className="form-group">
-          <label htmlFor="formEventTitle">タイトル</label>
+          <br />
+          <label htmlFor="formEventTitle">購入額</label>
           <input className="form-control" id="formEventTitle" value={title} onChange={e => setTitle(e.target.value)} />
         </div>
 
         <div className="form-group">
-          <label htmlFor="formEventBody">ボディー</label>
-          <textarea className="form-control" id="formEventBody" value={body} onChange={e => setBody(e.target.value)} />
+          <label htmlFor="formEventBody">購入枚数</label>
+          <input className="form-control" id="formEventBody" value={body} onChange={e => setBody(e.target.value)} />
         </div>
 
-        <button className="btn btn-primary" onClick={addEvent} disabled={unCreatable}>イベントを作成する</button>
-        <button className="btn btn-danger" onClick={deleteAllEvents} disabled={state.events.length === 0}>全てのイベントを削除する</button>
-        <button className="btn btn-danger" onClick={deleteAllOperationLogs} disabled={state.operationLogs.length === 0}>全ての操作ログを削除する</button>
+        <button className="btn btn-primary" onClick={addEvent} disabled={unCreatable}>SEND</button>
+        {/* <button className="btn btn-danger" onClick={deleteAllEvents} disabled={state.events.length === 0}>全てのイベントを削除する</button> */}
       </form>
     </>
   )
