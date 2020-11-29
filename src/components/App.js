@@ -2,7 +2,6 @@ import React, { useEffect, useReducer } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EventForm from './EventForm'
 import Events from './Events'
-import OperationLog from './OperationLog'
 import AppContext from '../contexts/AppContext'
 import reducer from '../reducers'
 
