@@ -13,7 +13,7 @@ const Events = () => {
 
   return (
     <>
-      <select style={{display: 'block', padding: '8px', margin: '0 auto', fontWeight: 'bold', backgroundColor: 'white'}} onChange={ e => setPrice(e.target.value) }>
+      <select style={{display: 'block', padding: '800px', margin: '0 auto', fontWeight: 'bold', backgroundColor: 'white'}} onChange={ e => setPrice(e.target.value) }>
         { prices.map((price, index) => (<option key={index} value={price}>{price / 10000}</option>))}
       </select>
       <br></br>
