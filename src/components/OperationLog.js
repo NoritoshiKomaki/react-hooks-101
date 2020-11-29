@@ -1,8 +1,6 @@
-import React, { useContext } from 'react'
-import AppContext from '../contexts/AppContext'
+import React from 'react'
 
 const OperationLog = () => {
-  const { state } = useContext(AppContext)
   return (
     <>
       <table className="table table-hover">
